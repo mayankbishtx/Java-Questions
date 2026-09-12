@@ -1,14 +1,17 @@
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Throw {
-    static void checkAge(int age) {
-        if (age < 18) {
-            throw new ArithmeticException("Access denied - You must be at least 18 years old.");
-        } 
-        else {
-            System.out.println("Access granted - You are old enough!");
-        }
+    static void readFile() throws IOException {
+        FileReader file = new FileReader("test.txt");
+        System.out.println("File opened...");
     }
 
     public static void main(String[] args) {
-        checkAge(15);
+        try {
+            readFile();
+        } catch (IOException e) {
+            System.out.println("File not found or could not be read.");
+        }
     }
 }
